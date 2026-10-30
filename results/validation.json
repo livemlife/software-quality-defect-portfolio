@@ -1,0 +1,30 @@
+[
+  {
+    "check": "unique primary key",
+    "passed": true
+  },
+  {
+    "check": "nonempty fact table",
+    "passed": true
+  },
+  {
+    "check": "required columns not null",
+    "passed": true
+  },
+  {
+    "check": "valid resolution dates",
+    "passed": true
+  },
+  {
+    "check": "monthly tests unique",
+    "passed": true
+  },
+  {
+    "check": "SQL group counts reconcile",
+    "passed": true
+  },
+  {
+    "check": "Python SQL production ratios match",
+    "passed": true
+  }
+]

@@ -1,0 +1,7 @@
+Defects = COUNTROWS(fact)
+Production Share = DIVIDE(CALCULATE([Defects], KEEPFILTERS(fact[stage] = "Production")), [Defects])
+Median Closed Resolution Days = MEDIAN(fact[resolution_days])
+Open At Cutoff = SUM(fact[open_at_cutoff])
+Reopened Share = DIVIDE(SUM(fact[reopened]), [Defects])
+Test Detections per 100 Tests =
+DIVIDE(CALCULATE([Defects], fact[stage] = "Test"), SUM(test_exposure[executed_tests])) * 100

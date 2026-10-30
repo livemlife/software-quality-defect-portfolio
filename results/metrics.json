@@ -1,0 +1,7 @@
+{
+  "defects": 779,
+  "production_detection_share": 0.11810012836970475,
+  "median_closed_resolution_days": 17.0,
+  "open_at_cutoff": 90,
+  "reopened_share": 0.1245186136071887
+}
