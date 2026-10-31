@@ -1,5 +1,21 @@
 # ソフトウェア品質と欠陥の分析
 
+![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-SQLite-003B57?logo=sqlite&logoColor=white) ![Data](https://img.shields.io/badge/Data-Synthetic%20data-0F766E) ![Scope](https://img.shields.io/badge/Scope-779%20defects-475569)
+
+欠陥の検出傾向とテスト規模、解決状況を組み合わせて、品質上の優先課題を検討する模擬分析です。
+
+**分析の重点：** 品質KPI・欠陥分析・テスト規模による正規化・未解決案件の分析
+
+| 閲覧目的 | 成果物 |
+| --- | --- |
+| 結果を確認 | [月次品質指標](results/monthly_quality.csv) · [原因分類](results/root_cause.csv) · [重要度別未解決案件](results/backlog_by_severity.csv) |
+| 分析コードを確認 | [Python](analyze.py) · [SQL](analysis.sql) |
+| データの定義を確認 | [分析用CSV](data/fact.csv) · [データ辞書](data/DICTIONARY.md) |
+| 再現性を確認 | [チェック結果](results/validation.json) · [依存パッケージ](requirements.txt) |
+| 報告書を閲覧 | [HTMLレポート](report.html) — ダウンロード・展開後にブラウザーで開く |
+| 今後のBI展開 | [Power BI構築仕様](powerbi/BUILD.md) · [DAX例](powerbi/measures.dax) — Desktop未検証 |
+
+
 模擬データ 個人学習プロジェクト。企業の実績や勤務先のデータを示すものではありません。
 
 ## 課題
@@ -41,3 +57,9 @@ Python 3.11以降で `python -m pip install -r requirements.txt` を実行後、
 ![exposure](./charts/exposure.svg)
 
 HTMLレポートはこのリポジトリをダウンロード・展開し、`report.html` をブラウザーで開くと閲覧できます。
+
+
+## 関連ポートフォリオ
+
+- [financial-market-analysis-portfolio](https://github.com/livemlife/financial-market-analysis-portfolio)
+- [business-process-kpi-portfolio](https://github.com/livemlife/business-process-kpi-portfolio)
