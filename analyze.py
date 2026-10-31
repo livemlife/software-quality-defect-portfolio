@@ -265,42 +265,17 @@ Python 3.11以降で `python -m pip install -r requirements.txt` を実行後、
 - analysis.sql と results/analysis.sqlite：実行済みSQLとDB
 - charts/：SVGグラフ
 - powerbi/：DAXとDesktop構築仕様（PBIX未作成）
-- career_ja.md：LinkedIn紹介文と面接説明
 
 使用技術：Python、Pandas、NumPy、SQLite、SVG。Power BIは設計のみで、実装済みスキルとしては記載していません。
 '''
 (P/'README.md').write_text(readme,encoding='utf-8')
-career=f'''# LinkedIn Projects
 
-プロジェクト名：{title} Python SQL
-
-【概要】{status}を用いた個人ポートフォリオです。{hypothesis}
-【方法】Pythonで加工・KPI計算を実施し、SQLiteで集計結果を照合。SVGとHTMLで可視化しました。
-【結果】{findings}
-【提案】{rec}
-【制約】{limits}
-【技術】Python、Pandas、NumPy、SQL、SQLite、Data Visualization。Power BI向け設計とDAX例を別途作成（Desktop未検証）。
-【成果物】同梱レポートとソースコード。公開URLはGitHub等への公開後に追加してください。
-
-## 面接での90秒説明
-
-私は、{hypothesis}という課題を設定しました。{status}を使い、まずデータの粒度と分母を決めました。その後Pythonで指標を計算し、SQLの別集計と一致することを確認しました。{findings}そこで、{rec}という提案をまとめました。{limits}分析結果と実際の改善効果を区別して説明することを重視しています。
-
-## 想定質問
-
-Q なぜこの指標ですか。\nA 業務上の意思決定と分母の対応を重視しました。件数だけで結論を出さず、率・時間・対象期間を併記しました。
-
-Q 実際に改善できましたか。\nA このプロジェクトは個人分析であり、実際の組織への施策導入や効果検証は実施していません。
-
-Q 次に何を追加しますか。\nA {rec}
-'''
-(P/'career_ja.md').write_text(career,encoding='utf-8')
 labels={'observations':'観測月数','cumulative_price_return':'累積価格リターン','annualized_price_growth':'年率換算成長率','annualized_volatility':'年率換算ボラティリティ','max_monthly_drawdown':'月次最大ドローダウン','tasks':'完了タスク件数','work_minutes_reduction_ratio':'平均作業時間の減少率','before_error_rate':'前半期エラー率','after_error_rate':'後半期エラー率','after_sla_rate':'後半期SLA達成率','defects':'検出欠陥数','production_detection_share':'本番検出比率','median_closed_resolution_days':'解決日数の中央値','open_at_cutoff':'基準日時点の未解決件数','reopened_share':'再オープン比率'}
 counts={'observations','tasks','defects','open_at_cutoff','median_closed_resolution_days'}
 cards=''.join(f'<div class="card"><small>{labels[k]}</small><strong>{format(v,",.0f") if k in counts else format(v,".1%")}</strong></div>' for k,v in metrics.items())
 imgs=''.join(f'<figure><img src="charts/{p.name}" alt="{p.stem} analysis chart"/></figure>' for p in sorted((P/'charts').glob('*.svg')))
 page=f'''<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{title}</title><style>
 body{{font-family:"Yu Gothic",Meiryo,sans-serif;color:#172337;background:#f1f5f9;margin:0}}main{{max-width:1120px;margin:auto;padding:48px 24px}}header{{padding:32px;background:#102441;color:white;border-radius:18px}}h1{{font-size:32px;line-height:1.4}}.tag{{color:#93c5fd}}.cards{{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:24px 0}}.card,section,figure{{background:white;border-radius:14px;padding:22px;margin:14px 0;box-shadow:0 2px 8px #10244108}}.card strong{{display:block;font-size:25px;margin-top:12px}}small{{overflow-wrap:anywhere}}img{{width:100%}}p{{line-height:1.9}}table{{border-collapse:collapse;width:100%;font-size:14px}}td,th{{border:1px solid #dbe3ec;padding:10px;text-align:left}}th{{background:#edf2f7}}a{{color:#2563eb}}.table{{overflow:auto}}footer{{padding:22px;color:#64748b}}@media print{{body{{background:white}}main{{padding:0}}section,figure{{break-inside:avoid}}}}
-</style><main><header><div class="tag">DATA ANALYTICS PORTFOLIO / {status}</div><h1>{title}</h1><p>{hypothesis}</p></header><div class="cards">{cards}</div><section><h2>主要な発見</h2><p>{findings}</p><p>{detail}</p><p>率はパーセント表示。解決日数は暦日。定義はデータ辞書とREADMEを参照。</p></section>{imgs}<section><h2>SQLによる検証結果</h2><div class="table">{result.to_html(index=False,border=0,float_format=lambda x:f'{x:.4f}')}</div></section><section><h2>意思決定への提案</h2><p>{rec}</p><h2>解釈の範囲</h2><p>{limits}</p></section><section><h2>再現と成果物</h2><p><a href="README.md">README</a> · <a href="data/fact.csv">CSV</a> · <a href="data/DICTIONARY.md">データ辞書</a> · <a href="analyze.py">Python</a> · <a href="analysis.sql">SQL</a> · <a href="powerbi/BUILD.md">Power BI仕様</a> · <a href="career_ja.md">LinkedInと面接説明</a></p><p>検証 {len(checks)} 件すべて成功。Power BI Desktopの検証および実際の業務効果の検証は未実施。</p></section><footer>個人ポートフォリオ · 2026-10-30 · データと前提を明示した再現可能な分析</footer></main></html>'''
+</style><main><header><div class="tag">DATA ANALYTICS PORTFOLIO / {status}</div><h1>{title}</h1><p>{hypothesis}</p></header><div class="cards">{cards}</div><section><h2>主要な発見</h2><p>{findings}</p><p>{detail}</p><p>率はパーセント表示。解決日数は暦日。定義はデータ辞書とREADMEを参照。</p></section>{imgs}<section><h2>SQLによる検証結果</h2><div class="table">{result.to_html(index=False,border=0,float_format=lambda x:f'{x:.4f}')}</div></section><section><h2>意思決定への提案</h2><p>{rec}</p><h2>解釈の範囲</h2><p>{limits}</p></section><section><h2>再現と成果物</h2><p><a href="README.md">README</a> · <a href="data/fact.csv">CSV</a> · <a href="data/DICTIONARY.md">データ辞書</a> · <a href="analyze.py">Python</a> · <a href="analysis.sql">SQL</a> · <a href="powerbi/BUILD.md">Power BI仕様</a></p><p>検証 {len(checks)} 件すべて成功。Power BI Desktopの検証および実際の業務効果の検証は未実施。</p></section><footer>個人ポートフォリオ · 2026-10-30 · データと前提を明示した再現可能な分析</footer></main></html>'''
 (P/'report.html').write_text(page,encoding='utf-8')
 print(K,json.dumps(metrics),f'{len(checks)} checks passed')

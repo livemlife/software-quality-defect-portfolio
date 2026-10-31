@@ -30,7 +30,6 @@ Python 3.11以降で `python -m pip install -r requirements.txt` を実行後、
 - analysis.sql と results/analysis.sqlite：実行済みSQLとDB
 - charts/：SVGグラフ
 - powerbi/：DAXとDesktop構築仕様（PBIX未作成）
-- career_ja.md：LinkedIn紹介文と面接説明
 
 使用技術：Python、Pandas、NumPy、SQLite、SVG。Power BIは設計のみで、実装済みスキルとしては記載していません。
 
